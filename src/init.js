@@ -29,6 +29,29 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    //hi malcolm
   });
+
+  //colorful dancer
+  $('.addColorfulDancerButton').on('click', function(event) {
+
+    var dataDancerName = $(this).data('dancer-name');// currently returning 'colorfulDancer';
+
+    var dataDancerNameFunction = window[dataDancerName]; // searches window with the string and gives us the actual function
+
+
+    // make a dancer with a random position
+    //new 'makeBlinkyDancer'; new makeBlinkyDance = function()
+    var colorDancer = new dataDancerNameFunction(
+
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random() * 1000
+    );
+    $('body').append(colorDancer.$node);
+    //hi malcolm
+  });
+
+
 });
 

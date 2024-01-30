@@ -25,3 +25,11 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+.colorfulDancer{
+  border:10px solid;
+  border-radius:10px;
+  position:absolute;
+}
+html{
+  background-color: blueviolet;
+}
