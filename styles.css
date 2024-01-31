@@ -30,6 +30,10 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
-html{
-  background-color: blueviolet;
+.rocketDancer{
+  position:absolute;
+  border:none;
+}
+body{
+  background-color: black;
 }

@@ -29,7 +29,7 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
-    //hi malcolm
+    window.dancers.push(dancer);
   });
 
   //colorful dancer
@@ -39,9 +39,6 @@ $(document).ready(function() {
 
     var dataDancerNameFunction = window[dataDancerName]; // searches window with the string and gives us the actual function
 
-
-    // make a dancer with a random position
-    //new 'makeBlinkyDancer'; new makeBlinkyDance = function()
     var colorDancer = new dataDancerNameFunction(
 
       $("body").height() * Math.random(),
@@ -49,7 +46,49 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(colorDancer.$node);
-    //hi malcolm
+    window.dancers.push(colorDancer);
+  });
+  //make rocket dancer
+  $('.addRocketDancerButton').on('click', function(event) {
+
+    var dataRocketName = $(this).data('rocket-name');// currently returning 'colorfulDancer';
+
+    var dataRocketNameFunction = window[dataRocketName]; // searches window with the string and gives us the actual function
+
+    var rocketDancer = new dataRocketNameFunction(
+
+      Math.random() * 900, //top below 900
+      Math.random(), //left 0
+      Math.random() * 20
+    );
+    $('body').append(rocketDancer.$node);
+    window.dancers.push(rocketDancer);
+  });
+  //make rocket dancer stop moving on mouse hover
+  $('body').on('mouseenter', '.rocketDancer', function(event) {
+    var instancesArray = window['dancers']; //array of all the dancer instances
+    var acess = ($('.dancer').index(this));
+    instancesArray[acess].dancing = false;
+  });
+
+  $('body').on('mouseleave', '.rocketDancer', function(event) {
+    var instancesArray = window['dancers'];//array of all the dancer instances
+
+    var acess = ($('.dancer').index(this));
+    instancesArray[acess].dancing = true;
+    instancesArray[acess].step();
+  });
+
+  //Line up Button function
+  //<a href="#" class="lineUp" data-line-up="lineUp">Line Up</a>   </div>
+  $('.lineUp').on('click', function(event) {
+
+    //iterate through array of instances
+    window.dancers.forEach(function(dancer) {
+      //call instance.lineUp();
+
+      dancer.lineUp();
+    });
   });
 
 

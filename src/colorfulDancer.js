@@ -6,11 +6,13 @@ colorfulDancer.prototype = Object.create(makeDancer.prototype);
 colorfulDancer.prototype.constructor = colorfulDancer;
 
 colorfulDancer.prototype.step = function() {
-  makeDancer.prototype.step.call(this);
-  var colors = {
-    color: 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ')',
-    top: this.top,
-    left: this.left
-  };
-  this.$node.css(colors);
+  if (this.dancing) {
+    makeDancer.prototype.step.call(this);
+    var colors = {
+      'color': 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ')',
+      top: this.top,
+      left: this.left
+    };
+    this.$node.css(colors);
+}
 };
